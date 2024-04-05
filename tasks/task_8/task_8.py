@@ -122,27 +122,37 @@ class QuizGenerator:
         Note: This method relies on `generate_question_with_vectorstore` for question generation and `validate_question` for ensuring question uniqueness. Ensure `question_bank` is properly initialized and managed.
         """
         self.question_bank = [] # Reset the question bank
+        max_retries = 3 # Retry Limit to prevent runaway LLM inferences and error loops.
 
         for _ in range(self.num_questions):
-            ##### YOUR CODE HERE #####
-            question_str = # Use class method to generate question
+            retries = 0
+            question_str = self.generate_question_with_vectorstore()
             
-            ##### YOUR CODE HERE #####
             try:
                 # Convert the JSON String to a dictionary
+                question = json.loads(question_str)
+                print("Converted the JSON String to a dictionary")
             except json.JSONDecodeError:
                 print("Failed to decode question JSON.")
                 continue  # Skip this iteration if JSON decoding fails
-            ##### YOUR CODE HERE #####
 
-            ##### YOUR CODE HERE #####
             # Validate the question using the validate_question method
             if self.validate_question(question):
                 print("Successfully generated unique question")
                 # Add the valid and unique question to the bank
+                self.question_bank.append(question)
             else:
                 print("Duplicate or invalid question detected.")
-            ##### YOUR CODE HERE #####
+                while retries < max_retries:
+                    question = json.loads(self.generate_question_with_vectorstore())
+                    if self.validate_question(question):
+                        self.question_bank.append(question)
+                        break
+                    retries +=1
+
+                if(retries >= max_retries):
+                    print("Exceeded maximum retries. Terminating the process")
+                    self.generate_quiz()
 
         return self.question_bank
 
@@ -166,10 +176,18 @@ class QuizGenerator:
 
         Note: This method assumes `question` is a valid dictionary and `question_bank` has been properly initialized.
         """
-        ##### YOUR CODE HERE #####
         # Consider missing 'question' key as invalid in the dict object
-        # Check if a question with the same text already exists in the self.question_bank
-        ##### YOUR CODE HERE #####
+        if "question" not in question:
+            is_unique =  False
+
+        # Check if a question with the same text already exists in the self.question_bank     
+        question_text = question['question']
+
+        for existing_question in self.question_bank:
+            if 'question' in existing_question and existing_question['question'] == question_text:
+                is_unique = False # Duplicate Question Found
+
+        is_unique = True # If no duplicates found, the question is unique
         return is_unique
 
 
@@ -178,7 +196,7 @@ if __name__ == "__main__":
     
     embed_config = {
         "model_name": "textembedding-gecko@003",
-        "project": "YOUR-PROJECT-ID-HERE",
+        "project": "radicalx-quizzify",
         "location": "us-central1"
     }
     

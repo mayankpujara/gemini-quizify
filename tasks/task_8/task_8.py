@@ -122,10 +122,8 @@ class QuizGenerator:
         Note: This method relies on `generate_question_with_vectorstore` for question generation and `validate_question` for ensuring question uniqueness. Ensure `question_bank` is properly initialized and managed.
         """
         self.question_bank = [] # Reset the question bank
-        max_retries = 3 # Retry Limit to prevent runaway LLM inferences and error loops.
 
         for _ in range(self.num_questions):
-            retries = 0
             question_str = self.generate_question_with_vectorstore()
             
             try:
@@ -143,16 +141,6 @@ class QuizGenerator:
                 self.question_bank.append(question)
             else:
                 print("Duplicate or invalid question detected.")
-                while retries < max_retries:
-                    question = json.loads(self.generate_question_with_vectorstore())
-                    if self.validate_question(question):
-                        self.question_bank.append(question)
-                        break
-                    retries +=1
-
-                if(retries >= max_retries):
-                    print("Exceeded maximum retries. Terminating the process")
-                    self.generate_quiz()
 
         return self.question_bank
 

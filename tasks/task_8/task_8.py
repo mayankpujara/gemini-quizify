@@ -15,10 +15,6 @@ class QuizGenerator:
         """
         Initializes the QuizGenerator with a required topic, the number of questions for the quiz,
         and an optional vectorstore for querying related information.
-
-        :param topic: A string representing the required topic of the quiz.
-        :param num_questions: An integer representing the number of questions to generate for the quiz, up to a maximum of 10.
-        :param vectorstore: An optional vectorstore instance (e.g., ChromaDB) to be used for querying information related to the quiz topic.
         """
         if not topic:
             self.topic = "General Knowledge"
@@ -61,10 +57,8 @@ class QuizGenerator:
         """
         Initializes and configures the Large Language Model (LLM) for generating quiz questions.
 
-        This method should handle any setup required to interact with the LLM, including authentication,
+        This method handles any setup required to interact with the LLM, including authentication,
         setting up any necessary parameters, or selecting a specific model.
-
-        :return: An instance or configuration for the LLM.
         """
         self.llm = VertexAI(
             model_name = "gemini-pro",
@@ -75,8 +69,6 @@ class QuizGenerator:
     def generate_question_with_vectorstore(self):
         """
         Generates a quiz question based on the topic provided using a vectorstore
-
-        :return: A JSON object representing the generated quiz question.
         """
         if not self.llm:
             self.init_llm()
@@ -105,21 +97,7 @@ class QuizGenerator:
 
     def generate_quiz(self) -> list:
         """
-        Task: Generate a list of unique quiz questions based on the specified topic and number of questions.
-
         This method orchestrates the quiz generation process by utilizing the `generate_question_with_vectorstore` method to generate each question and the `validate_question` method to ensure its uniqueness before adding it to the quiz.
-
-        Steps:
-            1. Initialize an empty list to store the unique quiz questions.
-            2. Loop through the desired number of questions (`num_questions`), generating each question via `generate_question_with_vectorstore`.
-            3. For each generated question, validate its uniqueness using `validate_question`.
-            4. If the question is unique, add it to the quiz; if not, attempt to generate a new question (consider implementing a retry limit).
-            5. Return the compiled list of unique quiz questions.
-
-        Returns:
-        - A list of dictionaries, where each dictionary represents a unique quiz question generated based on the topic.
-
-        Note: This method relies on `generate_question_with_vectorstore` for question generation and `validate_question` for ensuring question uniqueness. Ensure `question_bank` is properly initialized and managed.
         """
         self.question_bank = [] # Reset the question bank
 
@@ -146,24 +124,9 @@ class QuizGenerator:
 
     def validate_question(self, question: dict) -> bool:
         """
-        Task: Validate a quiz question for uniqueness within the generated quiz.
-
         This method checks if the provided question (as a dictionary) is unique based on its text content compared to previously generated questions stored in `question_bank`. The goal is to ensure that no duplicate questions are added to the quiz.
-
-        Steps:
-            1. Extract the question text from the provided dictionary.
-            2. Iterate over the existing questions in `question_bank` and compare their texts to the current question's text.
-            3. If a duplicate is found, return False to indicate the question is not unique.
-            4. If no duplicates are found, return True, indicating the question is unique and can be added to the quiz.
-
-        Parameters:
-        - question: A dictionary representing the generated quiz question, expected to contain at least a "question" key.
-
-        Returns:
-        - A boolean value: True if the question is unique, False otherwise.
-
-        Note: This method assumes `question` is a valid dictionary and `question_bank` has been properly initialized.
         """
+        
         # Consider missing 'question' key as invalid in the dict object
         if "question" not in question:
             is_unique =  False

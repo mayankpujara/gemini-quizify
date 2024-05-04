@@ -42,12 +42,14 @@ The project files encompass the following tasks:
 
 ### Work Flow
 
-**[Research Paper Link](https://ieeexplore-ieee-org.library.somaiya.edu/document/10465941)
-![Generate Quiz Algorithm Input](https://github.com/mayankpujara/mission-quizify/assets/76840933/b7a9bcbf-2415-43bb-9bf2-696c939c968e)
+**[Research Paper Link](https://ieeexplore-ieee-org.library.somaiya.edu/document/10465941)**
+
+![Generate Quiz Algorithm Input](https://github.com/mayankpujara/mission-quizify/assets/76840933/adf30753-8a01-4d7e-8f3e-2c2c0bb34ef0)
+
 
 **Generated Questions**
-![Screen State Handling](https://github.com/mayankpujara/mission-quizify/assets/76840933/da38a35c-3f20-4903-a85f-5fd9fadf786b)
 
+![Screen State Handling](https://github.com/mayankpujara/mission-quizify/assets/76840933/8ed63e33-6425-4fb6-8028-f368f5674dfb)
 
 ## Issues Faced
 

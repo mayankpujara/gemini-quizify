@@ -42,7 +42,7 @@ The project files encompass the following tasks:
 
 ### Work Flow
 
-**[Research Paper Link](https://ieeexplore-ieee-org.library.somaiya.edu/document/10465941)**
+**PDF (Research Paper) Input**
 
 ![Generate Quiz Algorithm Input](https://github.com/mayankpujara/mission-quizify/assets/76840933/adf30753-8a01-4d7e-8f3e-2c2c0bb34ef0)
 
@@ -56,3 +56,7 @@ The project files encompass the following tasks:
 ### ⚠️ Question Quality
 
 The current iteration of Gemini-pro predominantly produces JSON markdown results, which occasionally leads to suboptimal question generation. As a remedy, a straightforward prompt engineering methodology has been experimented with and found effective. It has been observed that implementing this prompt engineering approach can significantly enhance the success rate to approximately 80%.
+
+## Research Paper 
+
+[1] G. Rani, J. Singh and A. Khanna, "Comparative Analysis of Generative AI Models," 2023 International Conference on Advances in Computation, Communication and Information Technology (ICAICCIT), Faridabad, India, 2023, pp. 760-765, doi: 10.1109/ICAICCIT60255.2023.10465941. keywords: {Analytical models;Adaptation models;Generative AI;Image synthesis;Transfer learning;Training data;Transformers;Generative AI;GPT;ChatGPT;OpenAI;Generative Adversarial Networks (GANs)},

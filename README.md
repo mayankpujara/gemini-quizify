@@ -36,8 +36,21 @@ The project files encompass the following tasks:
 7. Supplying explanations for quiz answers.
 8. Handling errors and performing validation.
 
+## Implementation Flow
+
+![Task 9 Overview](https://github.com/mayankpujara/mission-quizify/assets/76840933/9cada379-444f-4bd9-9310-50f44e912fb2)
+
+### Work Flow
+
+**[Research Paper Link](https://ieeexplore-ieee-org.library.somaiya.edu/document/10465941)
+![Generate Quiz Algorithm Input](https://github.com/mayankpujara/mission-quizify/assets/76840933/b7a9bcbf-2415-43bb-9bf2-696c939c968e)
+
+**Generated Questions**
+![Screen State Handling](https://github.com/mayankpujara/mission-quizify/assets/76840933/da38a35c-3f20-4903-a85f-5fd9fadf786b)
+
+
 ## Issues Faced
 
-### Question Quality
+### ⚠️ Question Quality
 
 The current iteration of Gemini-pro predominantly produces JSON markdown results, which occasionally leads to suboptimal question generation. As a remedy, a straightforward prompt engineering methodology has been experimented with and found effective. It has been observed that implementing this prompt engineering approach can significantly enhance the success rate to approximately 80%.

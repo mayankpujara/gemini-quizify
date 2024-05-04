@@ -17,8 +17,27 @@ The lack of accessible and effective means for students and learners to reinforc
 
 ## Technologies Used
 
-- Python serves as the foundational language for crafting Gemini Quizify's backend logic.
-- Langchain is harnessed for proficient natural language processing, empowering the tool to adeptly understand and dissect textual content.
-- Chromadb stands as the robust database management system, ensuring swift storage and retrieval of user data and quiz content.
-- Google Gemini plays a pivotal role in AI-driven content analysis and generation, enabling the tool to dynamically craft quizzes from user-supplied documents.
-- Streamlit enriches the user experience by facilitating the creation of interactive web applications with Python, enhancing the accessibility and usability of Gemini Quizify.
+- **Python** serves as the foundational language for crafting Gemini Quizify's backend logic.
+- **Langchain** is harnessed for proficient natural language processing, empowering the tool to adeptly understand and dissect textual content.
+- **Chromadb** stands as the robust database management system, ensuring swift storage and retrieval of user data and quiz content.
+- **Google** Gemini plays a pivotal role in AI-driven content analysis and generation, enabling the tool to dynamically craft quizzes from user-supplied documents.
+- **Streamlit** enriches the user experience by facilitating the creation of interactive web applications with Python, enhancing the accessibility and usability of Gemini Quizify.
+
+## Tasks Completed
+
+The project files encompass the following tasks:
+
+1. Integration of Google Service Account for authentication.
+2. Implementing a PDF loader for document ingestion.
+3. Processing documents using Google Gemini.
+4. Generating text embeddings using Langchain.
+5. Building a user interface with Streamlit.
+6. Creating quizzes based on user-specified topics.
+7. Supplying explanations for quiz answers.
+8. Handling errors and performing validation.
+
+## Issues Faced
+
+### Question Quality
+
+The current iteration of Gemini-pro predominantly produces JSON markdown results, which occasionally leads to suboptimal question generation. As a remedy, a straightforward prompt engineering methodology has been experimented with and found effective. It has been observed that implementing this prompt engineering approach can significantly enhance the success rate to approximately 80%.

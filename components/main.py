@@ -3,11 +3,11 @@ import os
 import sys
 import json
 sys.path.append(os.path.abspath('../../'))
-from tasks.task_3.task_3 import DocumentProcessor
-from tasks.task_4.task_4 import EmbeddingClient
-from tasks.task_5.task_5 import ChromaCollectionCreator
-from tasks.task_8.task_8 import QuizGenerator
-from tasks.task_9.task_9 import QuizManager
+from pdf_processing import DocumentProcessor
+from embedding_client import EmbeddingClient
+from chroma_collection_creator import ChromaCollectionCreator
+from quiz_generator import QuizGenerator
+from quiz_manager import QuizManager
 
 if __name__ == "__main__":
     

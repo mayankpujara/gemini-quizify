@@ -2,9 +2,9 @@ import sys
 import os
 import streamlit as st
 sys.path.append(os.path.abspath('../../'))
-from tasks.task_3.task_3 import DocumentProcessor
-from tasks.task_4.task_4 import EmbeddingClient
-from tasks.task_5.task_5 import ChromaCollectionCreator
+from pdf_processing import DocumentProcessor
+from embedding_client import EmbeddingClient
+from chroma_collection_creator import ChromaCollectionCreator
 
 
 if __name__ == "__main__":
@@ -20,12 +20,12 @@ if __name__ == "__main__":
     screen = st.empty() # Screen 1, ingest documents
     with screen.container():
 
-        # 1) Initalize DocumentProcessor and Ingest Documents from Task 3
+        # 1) Initalize DocumentProcessor and Ingest Documents from pdf_processing
         processor = DocumentProcessor()
         processor.ingest_documents()
-        # 2) Initalize the EmbeddingClient from Task 4 with embed config
+        # 2) Initalize the EmbeddingClient from embedding_client with embed config
         embedding_model = EmbeddingClient(**embed_config)
-        # 3) Initialize the ChromaCollectionCreator from Task 5
+        # 3) Initialize the ChromaCollectionCreator from chroma_collection_creator
         chroma_creator = ChromaCollectionCreator(processor, embedding_model)
 
 

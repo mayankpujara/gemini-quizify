@@ -2,8 +2,8 @@ import sys
 import os
 import streamlit as st
 sys.path.append(os.path.abspath('../../'))
-from tasks.task_3.task_3 import DocumentProcessor
-from tasks.task_4.task_4 import EmbeddingClient
+from pdf_processing import DocumentProcessor
+from embedding_client import EmbeddingClient
 
 
 # Import Task libraries
@@ -70,7 +70,7 @@ class ChromaCollectionCreator:
             st.error("Chroma Collection has not been created!", icon="🚨")
 
 if __name__ == "__main__":
-    processor = DocumentProcessor() # Initialize from Task 3
+    processor = DocumentProcessor() # Initialize from pdf_processing
     processor.ingest_documents()
     
     embed_config = {
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         "location": "us-central1"
     }
     
-    embed_client = EmbeddingClient(**embed_config) # Initialize from Task 4
+    embed_client = EmbeddingClient(**embed_config) # Initialize from embedding_client
     
     chroma_creator = ChromaCollectionCreator(processor, embed_client)
     

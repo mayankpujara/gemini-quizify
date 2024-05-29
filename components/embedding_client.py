@@ -1,4 +1,3 @@
-# embedding_client.py
 import streamlit as st
 from langchain_google_vertexai import VertexAIEmbeddings
 
